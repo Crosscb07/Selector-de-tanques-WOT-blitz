@@ -1,1 +1,1 @@
-# Selector-de-tanques-WOT-blitz
+Esto es un proyecto que busca permitir a los usuarios seleccionar determinadas características, con el objetivo de encontrar un tanque de WOT blitz que cumpla con ellas.

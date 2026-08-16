@@ -1,3 +1,6 @@
+-- Habría que crear nuevas tablas para las clases, niveles, tipos y naciones, y cambiar los valores de las columnas de la tabla de tanques
+
+
 -- MySQL dump 10.13  Distrib 8.0.45, for macos15 (x86_64)
 --
 -- Host: localhost    Database: selector_de_tanques_wotblitz

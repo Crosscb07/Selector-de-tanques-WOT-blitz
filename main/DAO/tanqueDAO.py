@@ -7,7 +7,7 @@ class tanqueDAO:
     self.conexion = conexion.obtener_conexion()
   def obtener_todo(self):
     cursor = self.conexion.cursor()
-    sql = "SELECT * FROM tanques"
+    sql = "SELECT tanques.id, tanques.nombre, naciones.nacion, clases.clase, niveles.nivel, tipos.tipo FROM tanques JOIN naciones ON tanques.nacion = naciones.id JOIN clases ON tanques.clase = clases.id JOIN niveles ON tanques.nivel = niveles.id JOIN tipos ON tanques.tipo = tipos.id;"
     cursor.execute(sql)
     variable = cursor.fetchall()
     lista = []
@@ -79,46 +79,66 @@ def ingresar_tanques_caracteristicas(): # Esta función permite ingresar los tan
     variable = input("Paste: ") # Pide al usuario que pegue la información del tanque desde la web
     # Determina la nación del tanque
     if "U.S.A." in variable:
-        nacion = "Estados Unidos"
+        nacion = 1
     elif "Germany" in variable:
-        nacion = "Alemania"
+        nacion = 2
     elif "U.S.S.R." in variable:
-        nacion = "Unión Soviética"
+        nacion = 3
     elif "U.K." in variable:
-        nacion = "Reino Unido"
+        nacion = 4
     elif "Japan" in variable:
-        nacion = "Japón"
+        nacion = 5
     elif "China" in variable:
-        nacion = "China"
+        nacion = 6
     elif "France" in variable:
-        nacion = "Francia"
+        nacion = 7
     elif "European Nation" in variable:
-        nacion = "Nación Europea"
+        nacion = 8
     elif "Hybrid Nation" in variable:
-        nacion = "Nación Híbrida"
+        nacion = 9
 
     # Determina la clase del tanque
     hola = variable.split("Class ")[1].split(" Tier")[0]
     if "Light" == hola:
-        clase = "Ligero"
+        clase = 1
     elif "Medium" == hola:
-        clase = "Medio"
+        clase = 2
     elif "Heavy" == hola:
-        clase = "Pesado"
+        clase = 3
     elif "TD" == hola:
-        clase = "Destructor"
+        clase = 4
 
     # Determina el tipo del tanque
     if "Tech tree" in variable:
-        tipo = "Árbol tecnológico"
+        tipo = 1
     elif "Collector" in variable:
-        tipo = "Coleccionista"
+        tipo = 2
     elif "Premium" in variable:
-        tipo = "Premium"
+        tipo = 3
 
     id = variable.split("DEV: ID ")[1].split("DEV: NAME")[0] # Determina el id del tanque
-    nivel = variable.split("Tier ")[2].split(" Type")[0] # Determina el nivel del tanque
 
+    nivel = variable.split("Tier ")[2].split(" Type")[0] # Determina el nivel del tanque
+    if nivel == "I":
+        nivel = 1
+    elif nivel == "II":
+        nivel = 2
+    elif nivel == "III":
+        nivel = 3
+    elif nivel == "IV":
+        nivel = 4
+    elif nivel == "V": 
+        nivel = 5
+    elif nivel == "VI":
+        nivel = 6
+    elif nivel == "VII":
+        nivel = 7
+    elif nivel == "VIII":
+        nivel = 8
+    elif nivel == "IX":
+        nivel = 9
+    elif nivel == "X":
+        nivel = 10
     #-----------------------------------------------------------------------
 
     # Según el tipo de cañón del tanque, la información pegada desde la web se encuentra en diferentes posiciones, por lo que se crean listas con las posiciones de las características
